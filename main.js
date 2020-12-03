@@ -13,7 +13,7 @@ app.use(cors());
 
 
 // IMPORTS
-const { getUsers } = require('./routes/getUsers');
+const { getUsers } = require('./routes/users');
 
 app.get('/getUsers', async (req, res) => {
     try {
