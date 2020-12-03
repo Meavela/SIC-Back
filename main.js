@@ -14,9 +14,8 @@ app.use(cors());
 
 // IMPORTS
 const { getUsers } = require('./routes/getUsers');
-const { handleConnection } = require('./connection');
 
-app.get('/getSensors', async (req, res) => {
+app.get('/getUsers', async (req, res) => {
     try {
         let users = await getUsers();
         res.send(users);
@@ -26,7 +25,10 @@ app.get('/getSensors', async (req, res) => {
     }
 })
 
-
+app.listen(port, () => {
+    console.log(`App listening at http://localhost:${port}`)
+    // handleConnection();
+})
 
 
 
