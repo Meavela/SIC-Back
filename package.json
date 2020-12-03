@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Meavela/SIC-Back/issues"
   },
-  "homepage": "https://github.com/Meavela/SIC-Back#readme"
+  "homepage": "https://github.com/Meavela/SIC-Back#readme",
+  "dependencies": {
+    "sqlite3": "^5.0.0"
+  }
 }
