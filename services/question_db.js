@@ -8,7 +8,7 @@ module.exports.getAllQuestions = () => {
     try {
         const stmt = db.prepare(`SELECT * FROM Questions`);
         const res = stmt.all();
-        console.log(res);
+        //console.log(res);
         return res;
     }
     catch (err) {
@@ -25,7 +25,7 @@ module.exports.getQuestionsForID = (questionID) => {
     try {
         const stmt = db.prepare(`SELECT * FROM Questions WHERE ID = ${questionID}`);
         const res = stmt.get();
-        console.log(res);
+        //console.log(res);
         return res;
     }
     catch (err) {

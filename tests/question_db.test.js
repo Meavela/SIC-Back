@@ -2,7 +2,6 @@ const questionDB = require('../services/question_db');
 
 test('Get All Questions', async () => {
   const data = questionDB.getAllQuestions();
-  console.log(data);
   expect(JSON.stringify(data)).toBe(JSON.stringify([
     { ID: 1, Text: 'Etes vous content ?', Creator: 1 },
     {

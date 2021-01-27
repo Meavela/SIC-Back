@@ -1,11 +1,33 @@
+const database = require('../services/db');
+const db = database.getDatabase();
+
+/**
+ * Get all the avaiulable users
+ */
 module.exports.getAllUsers = () => {
-    let l = "getting all users"
-   // console.log(l)
-    return l
+    try {
+        const stmt = db.prepare(`SELECT * FROM Users`);
+        const res = stmt.all();
+        //console.log(res);
+        return res;
+    }
+    catch (err) {
+        return console.error(err.message);
+    }
 }
 
+/**
+ * Get a user for a specifique id
+ * @param {*} userID 
+ */
 module.exports.getUserForID = (userID) => {
-    let l = `getting user for id ${userID}`
- //   console.log(l)
-    return l
+    try {
+        const stmt = db.prepare(`SELECT * FROM Users WHERE ID = ${userID}`);
+        const res = stmt.get();
+        //console.log(res);
+        return res;
+    }
+    catch (err) {
+        return console.error(err.message);
+    }
 }
