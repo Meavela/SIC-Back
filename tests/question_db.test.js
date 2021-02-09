@@ -17,7 +17,7 @@ test('Get All Questions', async () => {
 });
 
 test('Get Question for ID', async () => {
-  const data = questionDB.getQuestionsForID(1);
+  const data = questionDB.getQuestionForID(1);
   expect(data).toEqual({
     ID: 1,
     Text: 'Etes vous content ?',

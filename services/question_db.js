@@ -21,7 +21,7 @@ module.exports.getAllQuestions = () => {
  * @param {int} questionID
  * @return {json} All the info linked to that question
  */
-module.exports.getQuestionsForID = (questionID) => {
+module.exports.getQuestionForID = (questionID) => {
   try {
     const stmt = db.prepare(`SELECT * FROM Questions WHERE ID = ${questionID}`);
     const res = stmt.get();

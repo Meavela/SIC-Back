@@ -11,7 +11,7 @@ app.use(express.urlencoded({
 app.use(cors());
 
 // IMPORTS
-const {getQuestionsForID} = require('./services/question_db');
+const {getQuestionForID} = require('./services/question_db');
 const {loginAdmin, login} = require('./services/login');
 
 app.get('/', async (req, res) => {
@@ -37,21 +37,31 @@ app.get('/users/', async (req, res) => {
 
 app.get('/question/:pollId', async (req, res) => {
   try {
-    res.send(getQuestionsForID(req.params.pollId));
+    res.send(getQuestionForID(req.params.pollId));
   } catch (error) {
     console.log(error);
     res.send(error);
   }
 });
 
-app.post('/question/:pollId/vote', async (req, res) => {
+app.post('/question/:pollId/vote/add', async (req, res) => {
   try {
-    res.send(getQuestionsForID(req.params.pollId));
+    res.send(getQuestionForID(req.params.pollId));
   } catch (error) {
     console.log(error);
     res.send(error);
   }
 });
+
+app.post('/question/:pollId/vote/remove', async (req, res) => {
+  try {
+    res.send(getQuestionForID(req.params.pollId));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
 
 app.post('/login/', async (req, res) => {
   try {
