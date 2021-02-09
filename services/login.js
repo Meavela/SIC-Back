@@ -31,10 +31,8 @@ module.exports.loginAdmin = (username, password) => {
 module.exports.login = (username, password) => {
   try {
     const user = users.getUserWithUsername(username);
-    console.log(user);
-
-    if (user.username === username) {
-      if (user.password === password) {
+    if (user !== undefined && user.Username === username) {
+      if (user.Password === password) {
         return {status: 'OK', message: 'OK'};
       } else {
         return {status: 'KO', message: 'Passsword is wrong'};

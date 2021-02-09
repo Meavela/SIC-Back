@@ -2,36 +2,58 @@ const login = require('../services/login');
 
 test('Login Admin good', async () => {
   const data = login.loginAdmin('admin', '123456');
-  console.log(data);
-  expect(data).toStrictEqual({ status: 'OK', message: 'OK' });
+  expect(data).toEqual({
+    status: 'OK',
+    message: 'OK',
+  });
 });
 
 test('Login Admin wrong user', async () => {
   const data = login.loginAdmin('coucou', 'coucou');
-  console.log(data);
-  expect(data).toStrictEqual(
-    {
-      status: 'KO',
-      message: 'User is unkown',
-    }
+  expect(data).toEqual(
+      {
+        status: 'KO',
+        message: 'User is unkown',
+      },
   );
 });
 
 test('Login Admin wrong password', async () => {
   const data = login.loginAdmin('admin', 'coucou');
-  console.log(data);
-  expect(data).toStrictEqual(
-    { status: 'KO', message: 'Passsword is wrong' }
+  expect(data).toEqual(
+      {
+        status: 'KO',
+        message: 'Passsword is wrong',
+      },
   );
 });
 
-
-/*
 test('Login Standard', async () => {
   const data = login.login('Adrien', 'Toto123');
-  console.log(data);
-  expect(JSON.stringify(data)).toBe(JSON.stringify([
-    {},
-  ]));
+  expect(data).toEqual(
+      {
+        status: 'OK',
+        message: 'OK',
+      },
+  );
 });
-*/
+
+test('Login Standard unkown', async () => {
+  const data = login.login('Adrieneee', 'Toto123');
+  expect(data).toEqual(
+      {
+        message: 'User is unkown',
+        status: 'KO',
+      },
+  );
+});
+
+test('Login Standard password', async () => {
+  const data = login.login('Adrien', 'Toto1234546546');
+  expect(data).toEqual(
+      {
+        status: 'KO',
+        message: 'Passsword is wrong',
+      },
+  );
+});

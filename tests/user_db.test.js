@@ -4,10 +4,10 @@ test('Get All Users', async () => {
   const data = userDB.getAllUsers();
   console.log(data);
   expect(data).toEqual([
-    { ID: 1, Password: 'Toto123', Username: 'Adrien' },
-    { ID: 2, Password: '15218765', Username: 'Lou' },
-    { ID: 3, Password: 'lebest38', Username: 'Edouard' },
-    { ID: 4, Password: '%^ùldsjkghyzhgfd', Username: 'Marco' }
+    {ID: 1, Password: 'Toto123', Username: 'Adrien'},
+    {ID: 2, Password: '15218765', Username: 'Lou'},
+    {ID: 3, Password: 'lebest38', Username: 'Edouard'},
+    {ID: 4, Password: '%^ùldsjkghyzhgfd', Username: 'Marco'},
   ]);
 });
 
