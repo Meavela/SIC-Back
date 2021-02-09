@@ -20,7 +20,6 @@ module.exports.getAllQuestions = () => {
  * Get the question linked to an id
  * @param {*} questionID 
  */
-
 module.exports.getQuestionsForID = (questionID) => {
     try {
         const stmt = db.prepare(`SELECT * FROM Questions WHERE ID = ${questionID}`);

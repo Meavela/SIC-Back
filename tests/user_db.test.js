@@ -12,5 +12,9 @@ test('Get All Users', async () => {
 
 test('Get User for ID', async () => {
   const data = userDB.getUserForID(1);
-  expect(JSON.stringify(data)).toBe(JSON.stringify({ ID: 1, Username: 'Adrien', Password: 'Toto123' }));
+  expect(JSON.stringify(data)).toBe(JSON.stringify({
+    ID: 1,
+    Username: 'Adrien',
+    Password: 'Toto123'
+  }));
 });
