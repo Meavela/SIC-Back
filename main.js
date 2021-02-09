@@ -35,7 +35,7 @@ app.get('/users/', async (req, res) => {
   }
 });
 
-app.get('/poll/:pollId', async (req, res) => {
+app.get('/question/:pollId', async (req, res) => {
   try {
     res.send(getQuestionsForID(req.params.pollId));
   } catch (error) {
@@ -44,7 +44,7 @@ app.get('/poll/:pollId', async (req, res) => {
   }
 });
 
-app.get('/poll/:pollId/vote', async (req, res) => {
+app.post('/question/:pollId/vote', async (req, res) => {
   try {
     res.send(getQuestionsForID(req.params.pollId));
   } catch (error) {
@@ -52,7 +52,6 @@ app.get('/poll/:pollId/vote', async (req, res) => {
     res.send(error);
   }
 });
-
 
 app.post('/login/', async (req, res) => {
   try {
