@@ -6,13 +6,13 @@ test('Get All Questions', async () => {
     {
       ID: 1,
       Text: 'Etes vous content ?',
-      Creator: 1
+      Creator: 1,
     },
     {
       ID: 2,
       Text: 'Votre avis sur la congolexicomatisation ?',
-      Creator: 3
-    }
+      Creator: 3,
+    },
   ]));
 });
 
@@ -21,6 +21,6 @@ test('Get Question for ID', async () => {
   expect(JSON.stringify(data)).toBe(JSON.stringify({
     ID: 1,
     Text: 'Etes vous content ?',
-    Creator: 1
+    Creator: 1,
   }));
 });

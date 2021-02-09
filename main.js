@@ -11,8 +11,7 @@ app.use(express.urlencoded({
 app.use(cors());
 
 // IMPORTS
-const {getUsers} = require('./routes/users');
-const {getQuestionsForID, getAllQuestions} = require('./services/question_db');
+const {getQuestionsForID} = require('./services/question_db');
 
 app.get('/users/', async (req, res) => {
   try {
