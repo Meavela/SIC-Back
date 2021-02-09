@@ -2,7 +2,6 @@ const userDB = require('../services/user_db');
 
 test('Get All Users', async () => {
   const data = userDB.getAllUsers();
-  console.log(data);
   expect(data).toEqual([
     {ID: 1, Password: 'Toto123', Username: 'Adrien'},
     {ID: 2, Password: '15218765', Username: 'Lou'},

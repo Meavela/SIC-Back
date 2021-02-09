@@ -14,6 +14,18 @@ app.use(cors());
 const {getQuestionsForID} = require('./services/question_db');
 const {loginAdmin, login} = require('./services/login');
 
+app.get('/', async (req, res) => {
+  try {
+    res.send({
+      status: 'ok',
+      date: new Date(),
+    });
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
 app.get('/users/', async (req, res) => {
   try {
     res.send(await getUsers());
@@ -32,16 +44,15 @@ app.get('/poll/:pollId', async (req, res) => {
   }
 });
 
-app.post('/login/admin', async (req, res) => {
+app.get('/poll/:pollId/vote', async (req, res) => {
   try {
-    console.log(req.body);
-    const l = loginAdmin(req.body.username, req.login.password);
-    res.send(l);
+    res.send(getQuestionsForID(req.params.pollId));
   } catch (error) {
     console.log(error);
     res.send(error);
   }
 });
+
 
 app.post('/login/', async (req, res) => {
   try {
@@ -54,12 +65,11 @@ app.post('/login/', async (req, res) => {
   }
 });
 
-app.get('/', async (req, res) => {
+app.post('/login/admin', async (req, res) => {
   try {
-    res.send({
-      status: 'ok',
-      date: new Date(),
-    });
+    console.log(req.body);
+    const l = loginAdmin(req.body.username, req.login.password);
+    res.send(l);
   } catch (error) {
     console.log(error);
     res.send(error);

@@ -23,4 +23,11 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'coverage/lcov-report/*', fingerprint: true
+            j archiveArtifacts artifacts: 'test-report.html', fingerprint: true
+        }
+    }
 }

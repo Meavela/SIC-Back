@@ -1,4 +1,5 @@
 const users = require('../services/user_db');
+
 /**
  * Login as an admin
  * @param {string} username
@@ -27,7 +28,6 @@ module.exports.loginAdmin = (username, password) => {
  * @param {string} password
  * @return {json} status
  */
-
 module.exports.login = (username, password) => {
   try {
     const user = users.getUserWithUsername(username);
