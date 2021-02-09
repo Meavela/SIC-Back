@@ -2,7 +2,7 @@ const questionDB = require('../services/question_db');
 
 test('Get All Questions', async () => {
   const data = questionDB.getAllQuestions();
-  expect(JSON.stringify(data)).toBe(JSON.stringify([
+  expect(data).toEqual([
     {
       ID: 1,
       Text: 'Etes vous content ?',
@@ -13,14 +13,14 @@ test('Get All Questions', async () => {
       Text: 'Votre avis sur la congolexicomatisation ?',
       Creator: 3,
     },
-  ]));
+  ]);
 });
 
 test('Get Question for ID', async () => {
   const data = questionDB.getQuestionsForID(1);
-  expect(JSON.stringify(data)).toBe(JSON.stringify({
+  expect(data).toEqual({
     ID: 1,
     Text: 'Etes vous content ?',
     Creator: 1,
-  }));
+  });
 });

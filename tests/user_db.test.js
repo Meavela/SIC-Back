@@ -2,19 +2,29 @@ const userDB = require('../services/user_db');
 
 test('Get All Users', async () => {
   const data = userDB.getAllUsers();
-  expect(JSON.stringify(data)).toBe(JSON.stringify([
-    {ID: 1, Username: 'Adrien', Password: 'Toto123'},
-    {ID: 2, Username: 'Lou', Password: '15218765'},
-    {ID: 3, Username: 'Edouard', Password: 'lebest38'},
-    {ID: 4, Username: 'Marco', Password: '%^ùldsjkghyzhgfd'},
-  ]));
+  console.log(data);
+  expect(data).toEqual([
+    { ID: 1, Password: 'Toto123', Username: 'Adrien' },
+    { ID: 2, Password: '15218765', Username: 'Lou' },
+    { ID: 3, Password: 'lebest38', Username: 'Edouard' },
+    { ID: 4, Password: '%^ùldsjkghyzhgfd', Username: 'Marco' }
+  ]);
 });
 
 test('Get User for ID', async () => {
   const data = userDB.getUserForID(1);
-  expect(JSON.stringify(data)).toBe(JSON.stringify({
+  expect(data).toEqual({
     ID: 1,
     Username: 'Adrien',
     Password: 'Toto123',
-  }));
+  });
+});
+
+test('Get User for username', async () => {
+  const data = userDB.getUserWithUsername('Adrien');
+  expect(data).toEqual({
+    ID: 1,
+    Username: 'Adrien',
+    Password: 'Toto123',
+  });
 });

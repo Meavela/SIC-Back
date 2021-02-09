@@ -31,3 +31,19 @@ module.exports.getUserForID = (userID) => {
     return console.error(err.message);
   }
 };
+
+/**
+ * Get a user for a specifique id
+ * @param {string} username
+ * @return {json} All info linked to that username
+ */
+module.exports.getUserWithUsername = (username) => {
+  try {
+    const stmt = db.prepare(`SELECT * FROM Users WHERE Username = '${username}'`);
+    const res = stmt.get();
+    // console.log(res);
+    return res;
+  } catch (err) {
+    return console.error(err.message);
+  }
+};
