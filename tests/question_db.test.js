@@ -1,7 +1,7 @@
 const questionDB = require('../services/question_db');
 
 test('Get All Questions', async () => {
-  const data = questionDB.getAllQuestions();
+  const data = questionDB.getAllQuestions_db();
   expect(data).toEqual([
     {
       ID: 1,
@@ -17,7 +17,7 @@ test('Get All Questions', async () => {
 });
 
 test('Get Question for ID', async () => {
-  const data = questionDB.getQuestionForID(1);
+  const data = questionDB.getQuestionForID_db(1);
   expect(data).toEqual({
     ID: 1,
     Text: 'Etes vous content ?',

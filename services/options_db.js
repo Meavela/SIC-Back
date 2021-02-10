@@ -6,7 +6,7 @@ const db = database.getDatabase();
  * @param {int} questionID
  * @return {json} All the info linked to that question
  */
-module.exports.getOptionsForID = (questionID) => {
+module.exports.getOptionsForID_db = (questionID) => {
   try {
     const stmt = db.prepare(`SELECT * FROM Options WHERE Question = ${questionID}`);
     const res = stmt.all();

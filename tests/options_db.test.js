@@ -1,7 +1,7 @@
 const optionDB = require('../services/options_db');
 
 test('Get Options for q question ID', async () => {
-  const data = optionDB.getOptionsForID(1);
+  const data = optionDB.getOptionsForID_db(1);
   expect(data).toEqual([{
     ID: 1,
     Question: 1,
@@ -15,6 +15,6 @@ test('Get Options for q question ID', async () => {
 });
 
 test('Get Options for q question ID wrong id', async () => {
-  const data = optionDB.getOptionsForID(-1);
+  const data = optionDB.getOptionsForID_db(-1);
   expect(data).toEqual([]);
 });
