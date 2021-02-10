@@ -9,11 +9,19 @@ app.use(express.urlencoded({
   extended: true,
 }));
 app.use(cors());
+const expressSwagger = require('express-swagger-generator')(app);
 
 // IMPORTS
 const {getQuestionForID, getAllQuestions} = require('./services/question_db');
 const {loginAdmin, login} = require('./services/login');
 
+/**
+ * get the server status
+ * @route GET /
+ * @group general
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.get('/', async (req, res) => {
   try {
     res.send({
@@ -26,6 +34,13 @@ app.get('/', async (req, res) => {
   }
 });
 
+/**
+ * get all the users
+ * @route GET /users/
+ * @group user
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.get('/users/', async (req, res) => {
   try {
     res.send(await getUsers());
@@ -35,6 +50,13 @@ app.get('/users/', async (req, res) => {
   }
 });
 
+/**
+ * get question for an id
+ * @route GET /question/{pollId}
+ * @group question
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.get('/question/:pollId', async (req, res) => {
   try {
     res.send(getQuestionForID(req.params.pollId));
@@ -44,6 +66,13 @@ app.get('/question/:pollId', async (req, res) => {
   }
 });
 
+/**
+ * get all questions
+ * @route GET /question/all
+ * @group question
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.get('/question/all', async (req, res) => {
   try {
     res.send(getAllQuestions());
@@ -53,6 +82,13 @@ app.get('/question/all', async (req, res) => {
   }
 });
 
+/**
+ * Add a Vote
+ * @route POST /question/{pollId}/vote/remove
+ * @group vote
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.post('/question/:pollId/vote/add', async (req, res) => {
   try {
     res.send(getQuestionForID(req.params.pollId));
@@ -62,7 +98,14 @@ app.post('/question/:pollId/vote/add', async (req, res) => {
   }
 });
 
-app.post('/question/:pollId/vote/remove', async (req, res) => {
+/**
+ * Remove a vote
+ * @route DELETE /question/{pollId}/vote/remove
+ * @group vote
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
+app.delete('/question/:pollId/vote/remove', async (req, res) => {
   try {
     res.send(getQuestionForID(req.params.pollId));
   } catch (error) {
@@ -71,6 +114,15 @@ app.post('/question/:pollId/vote/remove', async (req, res) => {
   }
 });
 
+/**
+ * Standard Login
+ * @route POST /login/
+ * @group user
+ * @param {string} username.query.required - username eg: admin
+ * @param {string} password.query.required - password eg: 123456
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.post('/login/', async (req, res) => {
   try {
     console.log(req.body);
@@ -82,6 +134,15 @@ app.post('/login/', async (req, res) => {
   }
 });
 
+/**
+ * Login Admin
+ * @route POST /login/admin
+ * @group admin
+ * @param {string} username.query.required - username eg: admin
+ * @param {string} password.query.required - password eg: 123456
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
 app.post('/login/admin', async (req, res) => {
   try {
     console.log(req.body);
@@ -93,6 +154,24 @@ app.post('/login/admin', async (req, res) => {
   }
 });
 
+const options = {
+  swaggerDefinition: {
+    info: {
+      description: 'SIC-Back api',
+      title: 'Swagger',
+      version: '1.0.0',
+    },
+    host: 'localhost:3005',
+    basePath: '/',
+    produces: [
+      'application/json',
+    ],
+    schemes: ['http', 'https'],
+  },
+  basedir: __dirname, // app absolute path
+  files: ['main.js'], // Path to the API handle folder
+};
+expressSwagger(options);
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
   // handleConnection();
