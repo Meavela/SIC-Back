@@ -13,8 +13,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'run lint'
-                sh 'run test'
+                sh 'npm run lint'
+                sh 'npm run test'
             }
         }
         stage('Deploy') {
