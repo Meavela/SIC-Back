@@ -3,13 +3,13 @@ const db = database.getDatabase();
 
 /**
  * Get all the available questions
- * @return {json} All thes question
+ * @return {json} All the question
  */
 module.exports.getAllQuestions = () => {
   try {
     const stmt = db.prepare(`SELECT * FROM Questions`);
     const res = stmt.all();
-    // console.log(res);
+    console.log(res);
     return res;
   } catch (err) {
     console.error(err.message);

@@ -12,9 +12,9 @@ app.use(cors());
 const expressSwagger = require('express-swagger-generator')(app);
 
 // IMPORTS
-const {getQuestionForID, getAllQuestions} = require('./services/question_db');
+const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
-
+const {getAllUsers, getUserForID} = require('./services/user_db');
 /**
  * get the server status
  * @route GET /
@@ -43,7 +43,23 @@ app.get('/', async (req, res) => {
  */
 app.get('/users/', async (req, res) => {
   try {
-    res.send(await getUsers());
+    res.send(getAllUsers());
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+/**
+ * get user based on the id
+ * @route GET /user/{id}
+ * @group user
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
+app.get('/user/:id', async (req, res) => {
+  try {
+    res.send(getUserForID(req.params.id));
   } catch (error) {
     console.log(error);
     res.send(error);
@@ -53,13 +69,14 @@ app.get('/users/', async (req, res) => {
 /**
  * get question for an id
  * @route GET /question/{pollId}
+ * @property {integer} pollId
  * @group question
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
 app.get('/question/:pollId', async (req, res) => {
   try {
-    res.send(getQuestionForID(req.params.pollId));
+    res.send(getQuestion(req.params.pollId));
   } catch (error) {
     console.log(error);
     res.send(error);
@@ -85,13 +102,14 @@ app.get('/question/all', async (req, res) => {
 /**
  * Add a Vote
  * @route POST /question/{pollId}/vote/remove
+ * @property {integer} pollId
  * @group vote
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
 app.post('/question/:pollId/vote/add', async (req, res) => {
   try {
-    res.send(getQuestionForID(req.params.pollId));
+    res.send(getQuestion(req.params.pollId));
   } catch (error) {
     console.log(error);
     res.send(error);
@@ -101,6 +119,7 @@ app.post('/question/:pollId/vote/add', async (req, res) => {
 /**
  * Remove a vote
  * @route DELETE /question/{pollId}/vote/remove
+ * @property {integer} pollId
  * @group vote
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
