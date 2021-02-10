@@ -12,7 +12,8 @@ module.exports.getAllUsers = () => {
     // console.log(res);
     return res;
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };
 
@@ -28,7 +29,8 @@ module.exports.getUserForID = (userID) => {
     // console.log(res);
     return res;
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };
 
@@ -44,6 +46,7 @@ module.exports.getUserWithUsername = (username) => {
     // console.log(res);
     return res;
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };

@@ -12,7 +12,8 @@ module.exports.getAllQuestions = () => {
     // console.log(res);
     return res;
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };
 
@@ -28,6 +29,7 @@ module.exports.getQuestionForID = (questionID) => {
     // console.log(res);
     return res;
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };

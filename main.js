@@ -71,7 +71,6 @@ app.post('/question/:pollId/vote/remove', async (req, res) => {
   }
 });
 
-
 app.post('/login/', async (req, res) => {
   try {
     console.log(req.body);

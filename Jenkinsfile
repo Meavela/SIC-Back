@@ -10,10 +10,15 @@ pipeline {
                 /* sh 'npm i'*/
             }
         }
+        stage('Lint') {
+            steps {
+                echo 'Linting..'
+                sh 'npm run lint'
+            }
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm run lint'
                 sh 'npm run test'
             }
         }

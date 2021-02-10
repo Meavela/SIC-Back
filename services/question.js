@@ -19,7 +19,8 @@ module.exports.getQuestion = (QuestionID) => {
       };
     }
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };
 
@@ -27,6 +28,7 @@ module.exports.getAllQuestions = () => {
   try {
     return questionDB.getAllQuestions();
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };

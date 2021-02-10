@@ -18,7 +18,8 @@ module.exports.loginAdmin = (username, password) => {
       return {status: 'KO', message: 'User is unkown'};
     }
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };
 
@@ -41,6 +42,7 @@ module.exports.login = (username, password) => {
       return {status: 'KO', message: 'User is unkown'};
     }
   } catch (err) {
-    return console.error(err.message);
+    console.error(err.message);
+    return err.message;
   }
 };
