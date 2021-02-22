@@ -7,6 +7,7 @@ test('Get All Users', async () => {
     {ID: 2, Password: '15218765', Username: 'Lou'},
     {ID: 3, Password: 'lebest38', Username: 'Edouard'},
     {ID: 4, Password: '%^ùldsjkghyzhgfd', Username: 'Marco'},
+    {ID: 5, Password: '123456', Username: 'admin'},
   ]);
 });
 
