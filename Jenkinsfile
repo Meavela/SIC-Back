@@ -27,7 +27,7 @@ pipeline {
             agent any
             steps {
                 withSonarQubeEnv('My SonarQube Server') {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'sonar-scanner -Dsonar.projectKey=SIC-Back -Dsonar.sources=. -Dsonar.host.url=http://20.56.176.197/ -Dsonar.login=959a633fe15189cf6cbf06d2bf433306e7d361db'
                 }
             }
         }
