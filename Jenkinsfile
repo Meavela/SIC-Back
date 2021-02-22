@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'npm i -g jest'
+                sh 'npm i -g jest eslint'
                 sh 'npm i'
             }
         }
