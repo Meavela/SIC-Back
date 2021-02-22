@@ -15,7 +15,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID} = require('./services/user_db');
-const { addVote, removeVote, getVotes } = require('./services/vote')
+const {addVote, getVotes} = require('./services/vote');
 
 /**
  * get the server status
@@ -95,7 +95,7 @@ app.get('/question/:pollId', async (req, res) => {
 app.get('/questions/all', async (req, res) => {
   try {
     res.send(getAllQuestions());
-    //res.send('good');
+    // res.send('good');
   } catch (error) {
     console.log(error);
     res.send(error);
