@@ -23,19 +23,9 @@ pipeline {
                 sh 'npm run test'
             }
         }
-        stage("build & SonarQube analysis") {
-            agent any
+        stage("SonarQube analysis") {
             steps {
-                withSonarQubeEnv('My SonarQube Server') {
-                    sh 'sonar-scanner -Dsonar.projectKey=SIC-Back -Dsonar.sources=. -Dsonar.host.url=http://20.56.176.197/ -Dsonar.login=959a633fe15189cf6cbf06d2bf433306e7d361db'
-                }
-            }
-        }
-        stage("Quality Gate") {
-            steps {
-                timeout(time: 1, unit: 'HOURS') {
-                    waitForQualityGate abortPipeline: true
-                }
+                sh 'sonar-scanner -Dsonar.projectKey=SIC-Back -Dsonar.sources=. -Dsonar.host.url=http://20.56.176.197/ -Dsonar.login=959a633fe15189cf6cbf06d2bf433306e7d361db'
             }
         }
         stage('Deploy') {
@@ -44,7 +34,6 @@ pipeline {
             }
         }
     }
-
     post {
         always {
             sh 'zip -rv coverage.zip coverage/lcov-report/'
