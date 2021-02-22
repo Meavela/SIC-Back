@@ -15,6 +15,8 @@ const expressSwagger = require('express-swagger-generator')(app);
 const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID} = require('./services/user_db');
+const { addVote, removeVote, getVotes } = require('./services/vote')
+
 /**
  * get the server status
  * @route GET /
@@ -90,9 +92,19 @@ app.get('/question/:pollId', async (req, res) => {
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-app.get('/question/all', async (req, res) => {
+app.get('/questions/all', async (req, res) => {
   try {
     res.send(getAllQuestions());
+    //res.send('good');
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.get('/question/:pollId/vote', async (req, res) => {
+  try {
+    res.send(getVotes(req.params.pollId));
   } catch (error) {
     console.log(error);
     res.send(error);
@@ -107,9 +119,9 @@ app.get('/question/all', async (req, res) => {
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
  */
-app.post('/question/:pollId/vote/add', async (req, res) => {
+app.post('/question/vote/add', async (req, res) => {
   try {
-    res.send(getQuestion(req.params.pollId));
+    res.send(addVote(req.body.id, req.body.username));
   } catch (error) {
     console.log(error);
     res.send(error);
@@ -126,7 +138,7 @@ app.post('/question/:pollId/vote/add', async (req, res) => {
  */
 app.delete('/question/:pollId/vote/remove', async (req, res) => {
   try {
-    res.send(getQuestionForID(req.params.pollId));
+    res.send(getQuestionForID(req.params.pollId, req.params.username));
   } catch (error) {
     console.log(error);
     res.send(error);
