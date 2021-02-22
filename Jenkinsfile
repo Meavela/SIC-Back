@@ -37,7 +37,7 @@ pipeline {
     post {
         always {
             sh 'zip -rv coverage.zip coverage/lcov-report/'
-            archiveArtifacts artifacts: 'overage.zip', fingerprint: true
+            archiveArtifacts artifacts: 'coverage.zip', fingerprint: true
             archiveArtifacts artifacts: 'test-report.html', fingerprint: true
         }
     }
