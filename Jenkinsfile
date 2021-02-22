@@ -7,8 +7,8 @@ pipeline {
                 echo 'Building..'
                 sh 'node --version'
                 sh 'npm --version'
-                sh 'sudo npm i -g jest'
-                sh 'sudo npm i'
+                sh 'npm i -g jest'
+                sh 'npm i'
             }
         }
         stage('Lint') {
