@@ -16,6 +16,7 @@ const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
 const {addVote, getVotes} = require('./services/vote');
+const { getuserbyusername } = require('./services/user');
 
 /**
  * get the server status
@@ -62,6 +63,22 @@ app.get('/users/', async (req, res) => {
 app.get('/user/:id', async (req, res) => {
   try {
     res.send(getUserForID(req.params.id));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+/**
+ * get user based on the id
+ * @route GET /user/{id}
+ * @group user
+ * @returns {object} 200
+ * @returns {Error}  default - Unexpected error
+ */
+ app.get('/user/:id/username', async (req, res) => {
+  try {
+    res.send(getuserbyusername(req.params.id));
   } catch (error) {
     console.log(error);
     res.send(error);
