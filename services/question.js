@@ -1,7 +1,7 @@
 const questionDB = require('../services/question_db');
 const optionDB = require('../services/options_db');
 
-module.exports.getQuestion = (QuestionID) => {
+module.exports.getQuestionForID = (QuestionID) => {
   try {
     if (QuestionID !== null && QuestionID !== undefined) {
       const question = questionDB.getQuestionForID_db(QuestionID);

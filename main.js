@@ -12,7 +12,7 @@ app.use(cors());
 const expressSwagger = require('express-swagger-generator')(app);
 
 // IMPORTS
-const {getQuestion,getQuestionForID, getAllQuestions} = require('./services/question');
+const {getQuestion, getQuestionForID, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
 const {addVote, getVotes} = require('./services/vote');
