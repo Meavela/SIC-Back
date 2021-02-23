@@ -166,7 +166,7 @@ app.delete('/question/:pollId/vote/remove', async (req, res) => {
 app.post('/login/', async (req, res) => {
   try {
     console.log(req.body);
-    const l = login(req.body.username, req.login.password);
+    const l = login(req.body.username, req.body.password);
     res.send(l);
   } catch (error) {
     console.log(error);
