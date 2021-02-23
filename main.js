@@ -14,7 +14,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 // IMPORTS
 const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
-const {getAllUsers, getUserForID} = require('./services/user_db');
+const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
 const {addVote, getVotes} = require('./services/vote');
 
 /**
@@ -122,6 +122,15 @@ app.get('/question/:pollId/vote', async (req, res) => {
 app.post('/question/vote/add', async (req, res) => {
   try {
     res.send(addVote(req.body.id, req.body.username));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.post('/users/add', async(req,res) => {
+  try {
+    res.send(addUser(req.body.username, req.body.password));
   } catch (error) {
     console.log(error);
     res.send(error);
