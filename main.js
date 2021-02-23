@@ -15,8 +15,9 @@ const expressSwagger = require('express-swagger-generator')(app);
 const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
-const {addVote, getVotes} = require('./services/vote');
+const {addVote, getVotes, removeVote} = require('./services/vote');
 const {getuserbyusername} = require('./services/user');
+const {removeOption, addOption} = require('./services/options_db');
 
 /**
  * get the server status
@@ -145,6 +146,24 @@ app.post('/question/vote/add', async (req, res) => {
   }
 });
 
+app.post('/option/remove/', async (req, res) => {
+  try {
+    res.send(removeOption(req.body.id));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.post('/option/add/', async (req, res) => {
+  try {
+    res.send(addOption(req.body.Text, req.body.Question));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
 app.post('/users/add/', async (req, res) => {
   try {
     res.send(addUser(req.body.username, req.body.password));
@@ -164,7 +183,8 @@ app.post('/users/add/', async (req, res) => {
  */
 app.delete('/question/:pollId/vote/remove', async (req, res) => {
   try {
-    res.send(getQuestion(req.params.pollId, req.params.username));
+    console.log(req.params.pollId, req.body.username)
+    res.send(removeVote(req.params.pollId, req.body.username));
   } catch (error) {
     console.log(error);
     res.send(error);
