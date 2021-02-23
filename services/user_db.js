@@ -56,7 +56,7 @@ module.exports.addUser = (username, password) => {
     const stmt = db.prepare(`SELECT * FROM Users WHERE Username = '${username}'`);
     const res = stmt.get();
     if (res === undefined) {
-      const stmt2 = db.prepare(`INSERT INTO Users (Username, Password) VALUES (${username}, ${password})`);
+      const stmt2 = db.prepare(`INSERT INTO Users (Username, Password) VALUES ('${username}', '${password}')`);
       const res2 = stmt2.run();
       if (res2.changes > 0) {
         return {

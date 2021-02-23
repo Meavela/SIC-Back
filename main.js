@@ -128,7 +128,7 @@ app.post('/question/vote/add', async (req, res) => {
   }
 });
 
-app.post('/users/add', async(req,res) => {
+app.post('/users/add/', async(req,res) => {
   try {
     res.send(addUser(req.body.username, req.body.password));
   } catch (error) {
