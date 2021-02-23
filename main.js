@@ -70,8 +70,8 @@ app.get('/user/:id', async (req, res) => {
 });
 
 /**
- * get user based on the id
- * @route GET /user/{id}
+ * get user based on the username
+ * @route GET /user/{id}/username
  * @group user
  * @returns {object} 200
  * @returns {Error}  default - Unexpected error
