@@ -23,7 +23,7 @@ module.exports.removeOption = (id) => {
     const stmt = db.prepare(`UPDATE Options SET Hide = '${true}' WHERE ID = ${id}`);
     const res = stmt.run();
     console.log(res);
-    return {Status: "OK"};
+    return {Status: 'OK'};
   } catch (err) {
     console.error(err.message);
     return err.message;
@@ -35,7 +35,7 @@ module.exports.addOption = (Text, Question) => {
     const stmt = db.prepare(`INSERT INTO Options (Text, Question) VALUES ('${Text}', '${Question}')`);
     const res = stmt.run();
     console.log(res);
-    return {Status: "OK"};
+    return {Status: 'OK'};
   } catch (err) {
     console.error(err.message);
     return err.message;
