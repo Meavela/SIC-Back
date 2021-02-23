@@ -27,7 +27,7 @@ module.exports.addVote = (OptionID, username) => {
   try {
     const stmt = db.prepare(`SELECT * FROM Users WHERE Username = '${username}'`);
     const res = stmt.get();
-    console.log(res);
+    // console.log(res);
     if (res === undefined) {
       return {
         status: 'KO',

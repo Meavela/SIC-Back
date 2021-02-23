@@ -1,7 +1,7 @@
 const votesDB = require('../services/vote_db');
 
 module.exports.addVote = (OptionID, username) => {
-  console.log(OptionID, username);
+  // console.log(OptionID, username);
   return votesDB.addVote(OptionID, username);
 };
 

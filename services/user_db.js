@@ -69,7 +69,7 @@ module.exports.addUser = (username, password) => {
           message: 'Error adding user',
         };
       }
-    }else{
+    } else {
       return {
         status: 'KO',
         message: 'Error adding vote Username unknown',
