@@ -17,6 +17,7 @@ const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
 const {addVote, getVotes} = require('./services/vote');
 const {getuserbyusername} = require('./services/user');
+const {removeOption, addOption} = require('./services/options_db')
 
 /**
  * get the server status
@@ -145,7 +146,25 @@ app.post('/question/vote/add', async (req, res) => {
   }
 });
 
-app.post('/users/add/', async (req, res) => {
+app.post('/option/remove/', async (req, res) => {
+  try {
+    res.send(removeOption(req.body.id));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.post('/option/add/', async (req, res) => {
+  try {
+    res.send(addOption(req.body.Text, req.body.Question));
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+});
+
+app.post('/users/add/', async(req,res) => {
   try {
     res.send(addUser(req.body.username, req.body.password));
   } catch (error) {

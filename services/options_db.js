@@ -17,3 +17,27 @@ module.exports.getOptionsForID_db = (questionID) => {
     return err.message;
   }
 };
+
+module.exports.removeOption = (id) => {
+  try {
+    const stmt = db.prepare(`UPDATE Options SET Hide = '${true}' WHERE ID = ${id}`);
+    const res = stmt.run();
+    console.log(res);
+    return {Status: "OK"};
+  } catch (err) {
+    console.error(err.message);
+    return err.message;
+  }
+};
+
+module.exports.addOption = (Text, Question) => {
+  try {
+    const stmt = db.prepare(`INSERT INTO Options (Text, Question) VALUES ('${Text}', '${Question}')`);
+    const res = stmt.run();
+    console.log(res);
+    return {Status: "OK"};
+  } catch (err) {
+    console.error(err.message);
+    return err.message;
+  }
+};
