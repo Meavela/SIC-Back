@@ -12,7 +12,7 @@ app.use(cors());
 const expressSwagger = require('express-swagger-generator')(app);
 
 // IMPORTS
-const {getQuestion, getQuestionForID, getAllQuestions} = require('./services/question');
+const {getQuestion, getAllQuestions} = require('./services/question');
 const {loginAdmin, login} = require('./services/login');
 const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
 const {addVote, getVotes} = require('./services/vote');
@@ -164,7 +164,7 @@ app.post('/users/add/', async (req, res) => {
  */
 app.delete('/question/:pollId/vote/remove', async (req, res) => {
   try {
-    res.send(getQuestionForID(req.params.pollId, req.params.username));
+    res.send(getQuestion(req.params.pollId, req.params.username));
   } catch (error) {
     console.log(error);
     res.send(error);
