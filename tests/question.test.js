@@ -22,7 +22,7 @@ test('get question id wrong', async () => {
 
 test('get all questions', async () => {
   const data = question.getAllQuestions();
-  console.log(data);
+  // console.log(data);
   expect(data).toEqual([
     {ID: 1, Text: 'Etes vous content ?', Creator: 1},
     {
