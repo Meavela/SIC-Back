@@ -8,7 +8,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npm --version'
                 sh 'rm -rf node_modules'
-               // sh 'npm i -g jest eslint'
+                sh 'npm i -g jest eslint'
                 sh 'npm i'
             }
         }

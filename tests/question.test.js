@@ -6,8 +6,8 @@ test('get question', async () => {
     status: 'OK',
     question: {ID: 1, Text: 'Etes vous content ?', Creator: 1},
     option: [
-      {ID: 1, Text: 'Oui', Question: 1},
-      {ID: 2, Text: 'Non', Question: 1},
+      {Hide: 'false', ID: 1, Text: 'Oui', Question: 1},
+      {Hide: 'false', ID: 2, Text: 'Non', Question: 1},
     ],
   });
 });
