@@ -8,7 +8,7 @@ pipeline {
                 sh 'node --version'
                 sh 'npm --version'
                 sh 'npm i -g jest eslint'
-                sh 'npm i'
+                sh 'npm i --verbose'
             }
         }
         stage('Lint') {
