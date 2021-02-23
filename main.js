@@ -183,7 +183,7 @@ app.post('/users/add/', async (req, res) => {
  */
 app.delete('/question/:pollId/vote/remove', async (req, res) => {
   try {
-    console.log(req.params.pollId, req.body.username)
+    console.log(req.params.pollId, req.body.username);
     res.send(removeVote(req.params.pollId, req.body.username));
   } catch (error) {
     console.log(error);
