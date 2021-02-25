@@ -1,31 +1,12 @@
 const login = require('../services/login');
 
 test('Login Admin good', async () => {
-  const data = login.loginAdmin('admin', '123456');
+  const data = login.login('admin', '123456');
   expect(data).toEqual({
     status: 'OK',
     message: 'OK',
+    IsAdmin: 'true',
   });
-});
-
-test('Login Admin wrong user', async () => {
-  const data = login.loginAdmin('coucou', 'coucou');
-  expect(data).toEqual(
-      {
-        status: 'KO',
-        message: 'User is unkown',
-      },
-  );
-});
-
-test('Login Admin wrong password', async () => {
-  const data = login.loginAdmin('admin', 'coucou');
-  expect(data).toEqual(
-      {
-        status: 'KO',
-        message: 'Passsword is wrong',
-      },
-  );
 });
 
 test('Login Standard', async () => {

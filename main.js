@@ -13,7 +13,7 @@ const expressSwagger = require('express-swagger-generator')(app);
 
 // IMPORTS
 const {getQuestion, getAllQuestions} = require('./services/question');
-const {loginAdmin, login} = require('./services/login');
+const {login} = require('./services/login');
 const {getAllUsers, getUserForID, addUser} = require('./services/user_db');
 const {addVote, getVotes, removeVote} = require('./services/vote');
 const {getuserbyusername} = require('./services/user');
@@ -204,26 +204,6 @@ app.post('/login/', async (req, res) => {
   try {
     console.log(req.body);
     const l = login(req.body.username, req.body.password);
-    res.send(l);
-  } catch (error) {
-    console.log(error);
-    res.send(error);
-  }
-});
-
-/**
- * Login Admin
- * @route POST /login/admin
- * @group admin
- * @param {string} username.query.required - username eg: admin
- * @param {string} password.query.required - password eg: 123456
- * @returns {object} 200
- * @returns {Error}  default - Unexpected error
- */
-app.post('/login/admin', async (req, res) => {
-  try {
-    console.log(req.body);
-    const l = loginAdmin(req.body.username, req.body.password);
     res.send(l);
   } catch (error) {
     console.log(error);
