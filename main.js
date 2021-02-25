@@ -223,7 +223,7 @@ app.post('/login/', async (req, res) => {
 app.post('/login/admin', async (req, res) => {
   try {
     console.log(req.body);
-    const l = loginAdmin(req.body.username, req.login.password);
+    const l = loginAdmin(req.body.username, req.body.password);
     res.send(l);
   } catch (error) {
     console.log(error);
